@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Auto Complete</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+    <script src="autocomplete.js"></script>
+    <link rel="stylesheet" type="text/css" href="autocomplete.css">
+    <style type="text/css">
+    .holder input[type=text] {
+        width: 100%;
+        margin: 0;
+        border: 1px solid #CFCDCD;
+        background: whiteSmoke;
+        font-family: Helvetica;
+        font-size: 14px;
+        padding: 5px 0;
+    }
+    .holder {
+        position: relative;
+        width: 250px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="holder">
+        <span>Type country name into the textbox, like <i>Viet Nam</i>
+        </span>
+        <input type="text" id="country">
+    </div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("input#country").autocomplete({
+        url: 'countries.txt',
+        maxResults: 3,
+        processData: function(data) {
+            var ret = [];
+            $.each(data, function(i, val) {
+                var value = "" + val;
+                ret.push(value.split(":")[1]);
+            });
+
+            return ret;
+        }
+    });
+})
+</script>
+
+</html>
