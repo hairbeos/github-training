@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form role="form">
+                    <fieldset>
+                        <legend>BASIC</legend>
+                        <div class="form-group">
+                            <label for="email1">Email</label>
+                            <input type="text" class="form-control" id="email1" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Password</label>
+                            <input type="password" class="form-control" id="password1" placeholder="Enter password">
+                        </div>
+                        <div class="checkbox">
+                            <label for="remember1">
+                                Remember password
+                            </label>
+                            <input type="checkbox" id="remember1">
+                            <button type="submit" class="btn pull-right">Login</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form role="form" class="form-inline">
+                    <fieldset>
+                        <legend>FORM INLINE</legend>
+                        <div class="form-group">
+                            <label for="email2" class="hidden-lg">Email</label>
+                            <input type="text" class="form-control" id="email2" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2" class="hidden-lg">Password</label>
+                            <input type="password" class="form-control" id="password2" placeholder="Enter password">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="remember2">Remember password
+                            </label>
+                            <button type="submit" class="btn pull-right">Login</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form role="form" class="form-horizontal">
+                    <fieldset>
+                        <legend>HORIZONTAL</legend>
+                        <div class="form-group">
+                            <label for="email1" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="email1" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1" class="col-lg-2 control-label">Password</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" id="password1" placeholder="Enter password">
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label for="remember1">
+                                Remember password
+                            </label>
+                            <input type="checkbox" id="remember1">
+                            <button type="submit" class="btn pull-right">Login</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form role="form">
+                    <fieldset>
+                        <legend>Form Inputs</legend>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Text">
+                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="datetime" class="form-control" placeholder="DateTime">
+                            <input type="date" class="form-control" placeholder="Date">
+                            <input type="color" class="form-control" placeholder="Color">
+                            <input type="week" class="form-control" placeholder="Week">
+                            <textarea rows="3" placeholder="Enter Description here" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="input-radio" id="input-radio-1">Male</label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="input-radio" id="input-radio-2">Female</label>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="input-checkbox" id="input-checkbox-1">Red</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="input-checkbox" id="input-checkbox-2">Green</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="input-checkbox" id="input-checkbox-3">Blue</label>
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <label class="radio-inline">
+                                    <input type="radio" name="input-radio" id="input-radio-1">Male</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="input-radio" id="input-radio-2">Female</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="input-checkbox" id="input-checkbox-1">Red</label>
+
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="input-checkbox" id="input-checkbox-2">Green</label>
+
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="input-checkbox" id="input-checkbox-3">Blue</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+
+                         <div class="form-group">
+                            <select multiple class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        	<imput type="text" class="form-control input-sm input-lg"/>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

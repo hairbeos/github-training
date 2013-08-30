@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prototype</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+var obj = new String();
+console.log(obj.__proto__);
+
+function Man(name) {
+    this.name = name;
+    this.getName = function() {
+        return this.name;
+    };
+    this.getInfo = function() {
+        return this.name + " - " + this.age;
+    };
+}
+
+Man.prototype = {
+    age: 10,
+    getAge: function() {
+        return this.age;
+    },
+
+    constructor: Man
+}
+
+var man = new Man("PATAHA");
+console.log(man.constructor.prototype);
+console.log(man.name + " - " + man.age);
+console.log(man.getInfo());
+
+for (var i in man) {
+    console.log(i + " = " + man[i]);
+    console.log("Has Own property = " + man.hasOwnProperty(i) + ", Enumerable = " + man.propertyIsEnumerable(i))
+}
+//man = new Man("PAT");
+//console.log(man.skin);
+
+//augement Array
+Array.prototype.isExisted = function(element) {
+
+    for (var i = 0; i < this.length; i++) {
+        return this[i] === element;
+    };
+
+    return false;
+}
+
+var ar = new Array(1, "1");
+console.log(ar.isExisted(1));
+
+
+var shape = {
+    type: 'shape',
+    getType: function() {
+        return this.type;
+    }
+};
+
+function Triangle(a, b, c) {
+    this.type = "triangle";
+    this.getPerimeter = function() {
+        return a + b + c;
+    };
+}
+
+Triangle.prototype = shape;
+
+var tri = new Triangle(1, 2, 3);
+console.log(tri.constructor.prototype === tri.__proto__);
+console.log(tri.getPerimeter());
+console.log(shape.isPrototypeOf(tri)); //should be true
+console.log(tri.getType());
+
+for (var p in tri) {
+	//if (tri.hasOwnProperty(p))
+	console.log(p + " - " + tri[p] + " - " + tri.propertyIsEnumerable(p));
+};
+
+Array.prototype.suffle = function(){
+	return this.sort(function(){
+		return 0.5 - Math.random();
+	});
+}
+
+var ar1 = [1,2,3,4,5,6,7,8,9];
+console.log(ar1.suffle());
+</script>
+
+</html>

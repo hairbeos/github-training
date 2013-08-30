@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inheritance</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+var Shape = function() {
+    this.name = 'shape';
+    this.toString = function() {
+        return this.name;
+    }
+}
+
+var Rectangle = function(a, b) {
+    this.name = 'rectangle';
+    this.getArea = function() {
+        return a * b;
+    }
+}
+
+Rectangle.prototype = new Shape();
+Rectangle.prototype.constructor = Rectangle;
+
+var rect = new Rectangle(5, 10);
+console.log(rect.toString());
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+
+
+var Shape = function() {
+    this.label = "shape";
+};
+Shape.prototype = {
+    name: 'shape',
+    toString: function() {
+        return this.name;
+    },
+    constructor: Shape
+}
+
+var Rectangle = function(a, b) {
+    this.a = a;
+    this.b = b;
+};
+
+Rectangle.prototype = Shape.prototype;
+Rectangle.prototype.constructor = Rectangle;
+Rectangle.prototype.name = 'rectangle';
+Rectangle.prototype.getArea = function() {
+    return this.a * this.b;
+}
+
+var shape = new Shape();
+var rect = new Rectangle(5, 10);
+console.log(shape.name); //side effect
+console.log(rect.toString());
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+console.log(rect.label); //undified
+for (p in rect) {
+    console.log(p + " = " + rect[p]);
+}
+
+//using Temporary constructor - F()
+var Shape = function() {
+    this.label = "shape";
+};
+Shape.prototype = {
+    name: 'shape',
+    toString: function() {
+        return this.name;
+    },
+    constructor: Shape
+}
+
+var F = function() {}
+F.prototype = Shape.prototype;
+
+var Rectangle = function(a, b) {
+    this.a = a;
+    this.b = b;
+};
+
+Rectangle.prototype = new F();
+Rectangle.prototype.constructor = Rectangle;
+Rectangle.prototype.name = 'rectangle';
+Rectangle.prototype.getArea = function() {
+    return this.a * this.b;
+}
+
+var shape = new Shape();
+var rect = new Rectangle(5, 10);
+console.log(shape.name); //should be "shape"
+console.log(rect.toString());
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+// for(p in rect){
+// 		console.log(p + " = " +rect[p]);
+// 	}
+//console.log(rect.super);
+
+//Access to parent from child object
+var Shape = function() {
+    this.label = "shape";
+};
+Shape.prototype = {
+    name: 'shape',
+    toString: function() {
+        var result = [];
+        if (this.constructor.uber) {
+            result[result.length] = this.constructor.uber.toString();
+        }
+        result[result.length] = this.name;
+        return result.join(', ');
+    },
+    constructor: Shape
+}
+
+var F = function() {}
+F.prototype = Shape.prototype;
+
+var Rectangle = function(a, b) {
+    this.a = a;
+    this.b = b;
+};
+
+Rectangle.prototype = new F();
+Rectangle.prototype.constructor = Rectangle;
+Rectangle.uber = Shape.prototype;
+Rectangle.prototype.name = 'rectangle';
+Rectangle.prototype.getArea = function() {
+    return this.a * this.b;
+}
+
+var shape = new Shape();
+var rect = new Rectangle(5, 10);
+console.log(shape.toString()); //should be "shape"
+console.log(rect.toString());
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+//access parent object
+console.log(rect.constructor.uber.name); //should be "shape"
+
+//using extend function
+console.log("Using extend function");
+
+function extend(Child, Parent) {
+    var F = function() {};
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.uber = Parent.prototype;
+}
+var Shape = function() {};
+Shape.prototype.name = "shape";
+Shape.prototype.toString = function() {
+    return this.name;
+}
+
+var Rectangle = function(a, b) {
+    this.a = a;
+    this.b = b;
+};
+extend(Rectangle, Shape);
+Rectangle.prototype.name = "rectangle";
+Rectangle.prototype.getArea = function() {
+    return this.a * this.b;
+}
+
+var shape = new Shape();
+var rect = new Rectangle(5, 10);
+console.log(shape.toString()); //should be "shape"
+console.log(rect.toString());
+console.log(rect.name + " - Has property 'name':" + rect.hasOwnProperty("name"));
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+
+
+//extend using copying
+
+function extend2(Child, Parent) {
+    var p = Parent.prototype;
+    var c = Child.prototype;
+    for (var i in p) {
+        c[i] = p[i];
+    }
+    c.uber = p;
+}
+
+var Shape = function() {};
+Shape.prototype.name = "shape";
+Shape.prototype.toString = function() {
+    return this.name;
+}
+
+var Rectangle = function(a, b) {
+    this.a = a;
+    this.b = b;
+};
+extend2(Rectangle, Shape);
+Rectangle.prototype.name = "rectangle";
+Rectangle.prototype.getArea = function() {
+    return this.a * this.b;
+}
+
+var shape = new Shape();
+var rect = new Rectangle(5, 10);
+console.log("Extend2 function")
+console.log(shape.toString()); //should be "shape"
+console.log(rect.toString());
+console.log(rect.name + " - Has property 'name':" + rect.hasOwnProperty("name"));
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+
+//object inherit from another object
+
+function extendCopy(p) {
+    var c = {};
+    for (i in p) {
+        c[i] = p[i];
+    }
+    c.uber = p;
+    return c;
+}
+
+var shape = {
+    name: "shape",
+    toString: function() {
+        return this.name;
+    }
+};
+
+var rect = extendCopy(shape);
+rect.name = 'rectangle';
+rect.a = 5;
+rect.b = 10;
+rect.getArea = function() {
+    return this.a * this.b;
+}
+
+console.log(shape.toString()); //should be "shape"
+console.log(rect.toString());
+console.log(rect.name + " - Has property 'name':" + rect.hasOwnProperty("name"));
+console.log(rect.getArea());
+
+function deepCopy(p, c) {
+    var c = c || {};
+    for (i in p) {
+        if (typeof p[i] === 'object') {
+            c[i] = p[i].constructor === Array ? [] : {};
+            deepCopy(p[i], c[i]);
+        } else {
+            c[i] = p[i];
+        }
+    }
+    return c;
+}
+
+//objectPlus, using to create new object by inheritance from object and add some methods and properties to this object
+
+function objectPlus(o, plus){
+	var c;
+	function F(){};
+	F.prototype = o;
+	c = new F();
+	c.uber = o;
+
+	//add properties
+	for(i in plus){
+		c[i] = plus[i];
+	}
+
+	return c;
+}
+
+//Borrow constructor, inherited from constructor, not prototype
+var Shape = function(){
+	this.id = 1;//will be inherited
+}
+Shape.prototype.name = 'shape'; //not inherited
+Shape.prototype.toString = function(){
+	return this.name; //not inherited
+}
+
+var Rectangle = function(a, b){
+	Shape.apply(this, arguments);
+	this.a = a;
+	this.b = b;
+}
+Rectangle.prototype.name = 'rectangle';
+Rectangle.prototype.getArea = function(){
+	return this.a * this.b;
+}
+
+var shape = new Shape();
+var rect = new Rectangle(5, 10);
+console.log(shape.toString()); //should be "shape"
+console.log(rect.toString());
+console.log(rect.name + " - Has property 'name':" + rect.hasOwnProperty("name"));
+console.log(rect.getArea());
+console.log(rect instanceof Rectangle); //true
+console.log(rect instanceof Shape); //true
+console.log(rect instanceof Object); //true
+
+for(p in rect){
+		console.log(p + " = " +rect[p]);
+	}
+</script>
+
+</html>

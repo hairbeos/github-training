@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grid System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="grid-system.css">
+</head>
+
+<body>
+    <div class="container">
+        <p>Stacked Layout</p>
+        <div class="row">
+            <div class="col-12">Width: 12</div>
+        </div>
+        <div class="row">
+            <div class="col-4">Width: 4</div>
+            <div class="col-8">Width: 8</div>
+        </div>
+        <div class="row">
+            <div class="col-4">Width: 4</div>
+            <div class="col-4">Width: 4</div>
+            <div class="col-4">Width: 4</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p>Mobile Desktop Layout</p>
+        <div class="row">
+            <div class="col-12 col-lg-6">Desktop: 6, Mobile: 12</div>
+            <div class="col-12 col-lg-6">Desktop: 6, Mobile: 12</div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-lg-3">Desktop: 3, Mobile: 6</div>
+            <div class="col-6 col-lg-3">Desktop: 3, Mobile: 6</div>
+            <div class="col-6 col-lg-3">Desktop: 3, Mobile: 6</div>
+            <div class="col-6 col-lg-3">Desktop: 3, Mobile: 6</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p>Mobile Table Desktop Layout</p>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4">Desktop: 4, Table: 6, Mobile: 12</div>
+            <div class="col-12 col-sm-6 col-lg-4">Desktop: 4, Table: 6, Mobile: 12</div>
+            <div class="col-12 col-sm-6 col-lg-4">Desktop: 4, Table: 6, Mobile: 12</div>
+        </div>
+       	<div class="row">
+            <div class="col-12 col-sm-6 col-lg-3">Desktop: 3, Table: 6, Mobile: 12</div>
+            <div class="col-12 col-sm-6 col-lg-3">Desktop: 3, Table: 6, Mobile: 12</div>
+            <div class="col-12 col-sm-6 col-lg-3">Desktop: 3, Table: 6, Mobile: 12</div>
+            <div class="col-12 col-sm-6 col-lg-3">Desktop: 3, Table: 6, Mobile: 12</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p>Offsetting Layout</p>
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-1">Offset: 1 - margin-left += 8.33%</div> 
+            <div class="col-lg-3 col-lg-offset-3">Offset: 3</div>            
+        </div>
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-1">Offset: 1 - margin-left += 8.33%</div> 
+            <div class="col-lg-1 col-lg-offset-9">Offset: 9 - margin-left += 9*8.33%</div>            
+        </div>
+        <div class="row">
+            <div class="col-1 col-offset-1">Offset: 1 - margin-left += 8.33%</div> 
+            <div class="col-1 col-offset-9">Offset: 9 - margin-left += 9*8.33%</div>            
+        </div>
+    </div>
+
+    <div class="container">
+        <p>Nested Layout</p>
+        <div class="row">
+            <div class="col-lg-12">
+            	<div class="col-lg-3">Width: 3</div>
+            	<div class="col-lg-9">Width: 9</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+            	<div class="col-3">Width: 3</div>
+            	<div class="col-9">Width: 9</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p>Ordering Layout</p>
+        <div class="row">
+            <div class="col-lg-9 col-lg-push-3">Width: 9, Pos: 1</div>
+            <div class="col-lg-3 col-lg-pull-9">Width: 3, Pos: 2</div>
+        </div>
+    </div>
+</body>
+
+</html>

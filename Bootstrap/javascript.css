@@ -1,0 +1,11 @@
+div > p {
+	text-transform: uppercase;
+	font-size: 1.5em;
+	margin-top: 20px;
+}
+.carousel-indicators li {
+	background-color: red;
+}
+.carousel-indicators li.active {
+	background-color: green;
+}
