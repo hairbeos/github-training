@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Backbone - Getting</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
+    <script src="http://documentcloud.github.com/underscore/underscore-min.js">
+    </script>
+    <script src="http://documentcloud.github.com/backbone/backbone-min.js">
+    </script>
+    <script src="models/Person.js"></script>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+(function($, window, document) {
+
+    $(document).ready(function() {
+        (function() {
+            var man = new Person();
+            console.log(JSON.stringify(man));
+            man.set({
+                age: 0,
+                name: 'PATAHA'
+            }, {
+                validate: true
+            });
+            man.set({
+                name: 'PATAHA'
+            });
+        })();
+    })
+})(window.jQuery, window, document);
+</script>
+
+</html>
