@@ -1,0 +1,17 @@
+{
+  "generator-bbb": {
+    "name": "First Backbone App",
+    "testFramework": "mocha",
+    "moduleStyle": "amd",
+    "templateEngine": "underscore",
+    "indent": {
+      "char": "tab",
+      "size": 1
+    },
+    "paths": {
+      "base": ".",
+      "tests": "test",
+      "modules": "app/modules"
+    }
+  }
+}
