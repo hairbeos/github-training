@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script type="text/javascript">
+    (function() {
+        function processArray(items, process, callback) {
+            var todo = items.concat(); //create a clone of the original
+            setTimeout(function() {
+                process(todo.shift());
+                if (todo.length > 0) {
+                    setTimeout(arguments.callee, 25);
+                } else {
+                    callback(items);
+                }
+            }, 25);
+        }
+
+        function processArray2(items, process, callback) {
+            var todo = items.concat(); //create a clone of the original
+            setTimeout(function() {
+                var start = +new Date();
+                do {
+                    process(todo.shift());
+                } while (todo.length > 0 && (+new Date() - start < 100));
+                if (todo.length > 0) {
+                    setTimeout(arguments.callee, 25);
+                } else {
+                    callback(items);
+                }
+            }, 25);
+        }
+        var process = function(item) {
+            console.log(item);
+        };
+
+        var arr = Array(500);
+        // var start = +new Date();
+        // processArray(arr, process, function() {
+        //     console.log('finish');
+        //     console.log((+new Date() - start));
+        // });
+
+        var start = +new Date();
+        processArray2(arr, process, function() {
+            console.log('finish');
+            console.log((+new Date() - start));
+        });
+    })();
+    </script>
+</body>
+
+</html>

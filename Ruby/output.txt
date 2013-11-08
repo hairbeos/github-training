@@ -1,0 +1,53 @@
+
+
+
+
+
+	
+		
+				
+				puts e.message
+				t.join
+			Thread.current[:var] = val
+			begin
+			end
+			rescue RuntimeError => e
+		date = IO.popen("date") # can using date.gets like as any IO object
+		end
+		threads.each do |t|
+	- $? global variable used to get exit code of the subprocess
+	- A thread can access any variables that are in scope when the thread is created. And the variables local to the block containing the thread code are local to the thread and are not shared
+	- A thread shares all global, instance, and local variables that are existence at the time the thread starts.
+	- All threads were created must be joined before program exit. Why? Because when the program terminates, all threads are killed, so you can wait for a particular thread to finish by calling the thread join method. This calling will block until the thread is finished.
+	- Create a mutex to control access to a resource and then lock it when to use that resource. If no one else has it locked, the thread continues to run. otherwise the thread suspends until they unlock it
+	- Fibers are often used to generate values from infinite sequences on demand
+	- Fibers use to write programs that look like that are using threads without incurring any of complexity inherent in threading
+	- If abort_on_exception is false (default) an unhandled exception will kill the current thread.
+	- If you need per-thread variables that can be accessed by other threads just using a Hash object of the Thread.current
+	- In Ruby 1.9, threading is now performed by the operating system
+	- Mutex.lock and Mutex.unlock methods are used to lock and unlock the variables from modifying from thread. But it will not unlock the mutex if an exception is thrown while it is locked 
+	- Mutex.synchronize method will lock the mutex and then unlocks the mutex. This also ensures that the mutex will get unlocked even if an exception is thrown while it is locked
+	- New thread are created with the Thread.new call. It is given a block that contains the code to be run in a new thread.
+	- Prior to Ruby 1.9, threading was implemented as green threads, that mean threads were switched within the interpreter
+	- The Object.system method output will simply go to the same destination as program's output
+	- The Object.system: return true if the command was found and executed properly. Raise exception if the command cannot be found. It return false if the command ran but returned and error.
+	- The backquote character `` used to capture the standard output of a subprocess
+	- The popen method runs a command as a subprocess and connects that subprocess's standard input and output to a Ruby IO object
+	- Thread.current: the current threading
+	- Thread.list: list all thread that are ruinable or stopped.
+	- Thread.priority, using to adjust thread priority
+	- Thread.status, Thread.alive?: use to determine the status of a particular thread.
+	- To handle the exception that is raised by a thread just simple rescue the exception when joining all threads
+	- Used to create synchronised regions that allow multiple threads update a shared variables
+	- When using threading, should make a copy of variables and pass to the block that used in a new thread to avoid any side effects
+1. Fibers
+2. Multithreading
+3. Mutual Exclusion
+4. Running multiple Processes
+Chapter 12: Fibers, Threads and Processes
+a. Creating Ruby threads
+a. Spawning new processes
+b. Independent Children
+b. Manipulating threads
+c. Thread variables
+d. Threads and Exceptions
