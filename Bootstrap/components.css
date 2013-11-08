@@ -1,0 +1,25 @@
+div > p {
+	text-transform: uppercase;
+	font-size: 1.5em;
+	margin-top: 20px;
+}
+/*div:not([class^=btn-group]) > .dropdown-menu {
+	display: block;
+	position: static;
+}*/
+.row > div:after {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+.row > div {
+	position: relative;
+	width: 100%
+}
+
+.navbar-collapse{
+	/*display: table;*/
+}
+.navbar-brand{
+	/*float: left;*/
+}

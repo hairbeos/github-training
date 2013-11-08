@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Objects</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+//constructor function
+
+function Hero(name) {
+    this.name = name;
+    this.age = 18;
+    this.hello = function() {
+        return "Hello " + name;
+    }
+}
+
+var obj = new Hero("PATAHA");
+console.log(obj.name, obj.hello());
+
+var obj1 = Hero("CHIDO");
+//console.log(typeof obj1.name);
+//console.log(name);
+
+console.log(obj instanceof Hero);
+
+//functions that return object
+
+function returnObject(name) {
+    return {
+        name: name
+    };
+}
+
+var obj2 = returnObject("PATAHA");
+console.log(obj2 instanceof Object); //true
+console.log(obj2.name); //PATAHA
+console.log(obj2.constructor); //using default constructor of Object class
+console.log(obj2.valueOf());
+
+//properties of Function objects
+console.log(obj2.constructor.toString());
+
+function testCalled() {
+    return testCalled.caller
+}
+
+function testCaller() {
+    return testCalled();
+}
+console.log(testCaller());
+
+function F() {
+    function C() {
+        return this;
+    }
+    return C();
+}
+var o = new F();
+console.log(o);
+console.log(typeof false);
+
+var a = [1, 2, [1, 2]];
+a.sort();
+console.log(a.join("--").toString());
+
+var re = /a/;
+console.log(re.test('abc'));
+console.log(re.exec('abc'));
+console.log(re instanceof RegExp); //true;
+
+//using regex with string functions
+
+var str = "cong hoa xa hoi chu nghia Viet Nam";
+var ret = str.match(/v/ig);
+console.log(ret);
+ret = str.search(/o/g);
+console.log(ret);
+ret = str.replace(/o/g, "b");
+console.log(ret);
+//capitalize
+ret = str.replace(/(^|\s)[a-z]/g, function(w) {
+    console.log(w);
+    return w.toUpperCase()
+});
+console.log(ret);
+</script>
+
+</html>

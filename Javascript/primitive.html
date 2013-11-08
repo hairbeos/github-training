@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Primitive</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+    <style type="text/css">
+    div[class^=row] {
+        background-color: gold;
+        margin: 20px;
+        padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row-12">
+            <p>Primitive</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var a = [1, "2"];
+console.log(a);
+console.log(typeof a[1]);
+
+var a = 0xef;
+console.log(a);
+console.log(1e2);
+console.log(typeof Infinity);
+console.log(Infinity - Infinity);
+
+console.log(NaN);
+
+//type of NaN is NaN but the var is defined as NaN then type of var is a number
+var a = NaN;
+console.log(typeof a);
+
+//string convertion
+var s = "1";
+s++;
+console.log("type of s is " + (typeof s) + " and value is " + s);
+var s = "a";
+s++;
+console.log("type of s is " + (typeof s) + " and value is " + s);
+
+var s = "";
+s = !! s;
+console.log("type of s is " + (typeof s) + " and value is " + s);
+
+//boolean convertion exception, all value that is converted to boolean is true except
+var be = ["", null, NaN, undefined, false];
+
+for (var i in be) {
+    console.log("Type " + typeof be[i] + " - Value: " + !! be[i])
+}
+
+console.log(undefined == null);
+var a;
+typeof a;
+
+console.log(false === "");
+console.log(typeof "2E+2");
+
+var v = v || 10;
+console.log(v);
+
+var s = "1s";
+s++
+console.log(s);
+
+//var scope, if variable defined outside of any function then that variable is visible as local variable
+for (var i = 0; i < 5; i++) {}
+console.log(i);
+
+function getname() {
+    var local = "Name";
+    for (var j = 0; j < 1; j++) {}
+    return local;
+}
+
+//console.log(local); //cant accessable
+//console.log(j); //error
+
+var global = 1;
+
+function f() {
+    var local = 2;
+    global++;
+    return global;
+}
+//console.log(local);
+
+//functions are data
+var f = function() {
+    return 1;
+}
+
+console.log(f()); //run the function
+console.log(f); //reference to the function
+
+var a = (function(a) {
+    return a;
+})(12);
+
+console.log(a);
+
+function showArgument(a) {
+    return arguments[0];
+}
+console.log(showArgument("cong hoa"));
+
+function doMath(inputs, callback) {
+    var ret = [];
+    for (var i in inputs) {
+        ret[i] = callback(inputs[i])
+    }
+    return ret;
+}
+
+function plusByOne(value) {
+    return value + 1;
+}
+
+console.log(doMath([1, 2, 3, 4, 5], plusByOne));
+console.log(doMath([1, 2, 3, 4, 5], Math.sqrt));
+
+//self-invoking function
+(function(msg) {
+    return msg
+})("Just executing 1 time");
+
+//inner function
+var multipleBy2 = function(input) {
+    var inner = function(p) {
+        return p * 2;
+    }
+
+    return inner(input);
+}
+console.log(multipleBy2(100));
+//console.log(inner(2)); //error
+
+//Functions that return functions
+
+function getNameUpperCase() {
+    return function(name) {
+        return String.toUpperCase(name);
+    }
+}
+
+//normal executing by assign to variable
+var normalF = getNameUpperCase();
+console.log(normalF("pataha"));
+//executing without assignment
+console.log(getNameUpperCase()("pataha"));
+
+console.log(Infinity == Infinity)
+</script>
+
+</html>

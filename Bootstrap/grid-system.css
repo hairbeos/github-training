@@ -1,0 +1,18 @@
+.row {
+	border: 1px solid black;
+	padding: 5px;
+	background-color: gold;
+	margin: 10px 0px;
+}
+
+.row div[class^=col-] {
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+div > p {
+	text-transform: capitalize;
+	font-size: 2em;
+	line-height: 50px;
+	margin-top: 20px;
+}
