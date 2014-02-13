@@ -1,0 +1,8 @@
+<h1>User Info</h1>
+<p>
+	<%= @user.username %>
+</p>
+
+<% if current_user && current_user.admin? || current_user == @user %>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+<% end %>

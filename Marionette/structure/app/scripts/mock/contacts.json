@@ -1,0 +1,5 @@
+[
+	{ "id": 1, "firstName": "F Name1", "lastName": "FName1", "email": "hairbeos@yahho.com" },
+	{ "id": 2, "firstName": "F Name2", "lastName": "FName2", "email": "hairbeos1@yahho.com" },
+	{ "id": 3, "firstName": "F Name3", "lastName": "FName3", "email": "hairbeos2@yahho.com" }
+]
