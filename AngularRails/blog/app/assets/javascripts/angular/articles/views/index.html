@@ -1,0 +1,8 @@
+<div>
+	<div ng-repeat="article in articles">
+		<h1><a ng-click="showArticle(article.id)">{{article.title}}</a></h1>
+		<p>{{article.content}}</p>
+	</div>
+
+	<a ng-click="newArticle()">New Article</a>
+</div>
